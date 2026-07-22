@@ -1,0 +1,64 @@
+1 오늘 한 것: 최댓값 / 두 번째 최댓값 찾기 함수 작성함
+
+    2 AI가 지적한 것 중 몰랐던 것: 불필요하게 복잡한 인덱스 변수 사용 (I, J, T):
+    최대값이나 두 번째 값을 찾기 위해 I + T, I + J 같은 복잡한 포인터 방식을 사용할 필요가 없습니다. 배열을 단 한 번만 처음부터 끝까지 순회(단일 for문) 하면서 두 개의 변수만 업데이트하면 $O(N)$ 시간 복잡도로 가장 효율적으로 해결할 수 있습니다
+    , 자바의 표준 명명 규칙(Naming Convention)에서 변수명은 소문자로 시작하는 카멜 케이스(firstMost, numberSize)를 사용하는 것이 좋습니다. 대문자로 시작하는 변수명(FirstMost, I, J)은 클래스 이름과 혼동을 줍니다
+    , 리스트의 크기만큼 반복하기 위해 만든 조건문이지만, 일반적인 for (int i = 0; i < list.size(); i++) 루프를 놔두고 감소하는 카운터 방식을 선택한 명확한 이유를 설명하기 힘듭니다.
+
+3 내일 계획: 없음
+
+    4 오늘 AI를 어느 구간(🔴🟡🟢)에서, 왜 그렇게 판단해서 썼는지: 문제 풀 때는 🔴로 버텼고, 다 푼 뒤 검증만 🟢로 활용함
+
+🟢단계에서 AI가 준 최종 코드(오직AI)
+:
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Day1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        while (true) {
+            System.out.print("배열 값 입력 (0 입력 시 종료): ");
+            int input = sc.nextInt();
+            if (input == 0) {
+                System.out.println("<입력 종료>\n");
+                break;
+            }
+            numbers.add(input);
+        }
+
+        System.out.println("입력된 값들: " + numbers);
+
+        int size = numbers.size();
+
+        if (size == 0) {
+            System.out.println("입력된 값이 없습니다.");
+        } else if (size == 1) {
+            System.out.println("첫 번째로 큰 값: " + numbers.get(0) + " (인덱스: 0)");
+            System.out.println("두 번째로 큰 값: 없음");
+        } else {
+            // 인덱스로 관리
+            int maxIdx = 0;
+            int secondMaxIdx = -1;
+
+            for (int i = 1; i < size; i++) {
+                int current = numbers.get(i);
+                
+                if (current > numbers.get(maxIdx)) {
+                    secondMaxIdx = maxIdx; // 기존 1등이 2등으로 밀려남
+                    maxIdx = i;            // 새로운 1등 등극
+                } else if (secondMaxIdx == -1 || current > numbers.get(secondMaxIdx)) {
+                    // 1등보다는 작지만 2등보다 큰 경우 (또는 2등이 아직 안 정해진 경우)
+                    secondMaxIdx = i;
+                }
+            }
+
+            System.out.println("첫 번째로 큰 값: " + numbers.get(maxIdx) + " (인덱스: " + maxIdx + ")");
+            System.out.println("두 번째로 큰 값: " + numbers.get(secondMaxIdx) + " (인덱스: " + secondMaxIdx + ")");
+        }
+
+        sc.close();
+    }
+}
