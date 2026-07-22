@@ -1,1 +1,27 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 
+public class Day1{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	
+		int FirstMost = 0;
+		int SecondMost = 0;
+
+		ArrayList<Integer> Number = new ArrayList<>();
+			
+			while(true) {
+				System.out.print("배열에 넣을 값들을 입력: ");
+				int input = sc.nextInt();
+			
+				if (input == 0) {
+				break;			
+				}
+				Number.add(input);
+				int NumberLength = Number.length;
+
+			for(NumberLength ; NumberLength > 0 ; NumberLength--) {
+			System.out.print(Number[i] -= Number[i + 1]);
+			}
+	}
+}
