@@ -1,1 +1,46 @@
+import java.util.Scanner;
 
+public class Day3 {
+
+	public static int ReturnBack(int i) {	
+
+		if(i <= 1) {
+			return 1;
+		}
+
+		return i * ReturnBack(i - 1);
+	}
+
+	public static int Repeat(int i) {
+
+		int RepeatResult = 1;
+
+		for(int j = 1; j <= i; j++) {
+			RepeatResult = RepeatResult * j;
+		}	
+		return RepeatResult;
+	}
+
+
+	public static void main(String[] args) {
+		Scanner Sc = new Scanner(System.in, "MS949");
+	
+		System.out.println("몇 팩토리얼을 구하시겠어요?");
+		int Factorial = Sc.nextInt();
+
+		System.out.println("어떤 방식으로 팩토리얼을 구하시겠어요?");
+		System.out.println("[1]: 재귀 함수");
+		System.out.println("[2]: 반복문 함수");
+		int Construction = Sc.nextInt();
+
+		if (Construction == 1) {
+			int FactorialResult = ReturnBack(Factorial); 
+			System.out.println("[" + Construction + "]번 방식으로 계산해 구한 " + Factorial + "팩토리얼은" + "[" + FactorialResult + "]입니다.");
+		} else if(Construction == 2) {
+			int FactorialResult = Repeat(Factorial);
+			System.out.println("[" + Construction + "]번 방식으로 계산해 구한 " + Factorial + "팩토리얼은" + "[" + FactorialResult + "]입니다.");
+		}		
+
+		Sc.close();
+	}
+}
