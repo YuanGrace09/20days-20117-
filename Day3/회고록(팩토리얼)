@@ -15,3 +15,30 @@
 
 문제2: main 메소드 안에서 결과를 출력하는 System.out.println 구문이 if문과 else if문에 중복되어 작성되어 있습니다. 또한, 사용자가 1이나 2가 아닌 다른 번호(예: 3, 99)를 입력하면 아무런 안내 없이 프로그램이 끝납니다.
   -개선법: 선택지에 대한 else 예외 구문을 추가하고, 출력 코드는 하단에 하나로 합쳐서 작성합니다.
+
+
+재귀 함수 코드 수정:
+
+```public static long ReturnBack(int i) {    
+    if (i <= 1) { // 0!과 1!은 모두 1
+        return 1;
+    }
+    return i * ReturnBack(i - 1);
+}
+
+출력문 문제 수정:
+
+```long factorialResult = 0;
+
+if (Construction == 1) {
+    factorialResult = ReturnBack(Factorial);
+} else if (Construction == 2) {
+    factorialResult = Repeat(Factorial);
+} else {
+    System.out.println("잘못된 번호를 선택하셨습니다.");
+    Sc.close();
+    return; // 프로그램 종료
+}
+
+// 출력문 중복 제거
+System.out.println("[" + Construction + "]번 방식으로 계산해 구한 " + Factorial + "팩토리얼은 [" + factorialResult + "]입니다.");
