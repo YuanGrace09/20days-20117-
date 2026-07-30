@@ -9,37 +9,42 @@ public class Day1 {
 		int SecondMost = 0;
 		
 		int I = 0;
-		int J = 1; 
-		int T = 0;
+		int J = 1;
 		
 		ArrayList<Integer> Number = new ArrayList<>();
 
 		while(true) {
 			System.out.print("배열 값 입력: ");
 			int Input = Sc.nextInt();
+
 			if (Input == 0) {
 			System.out.println("<입력 종료>\n");
 			break;
 			}
 			Number.add(Input);
 		}
+
 		int NumberSize = Number.size();
 		System.out.println("입력된 값들: " + Number);
 
 		if(Number.size() == 1) {
 			System.out.print("배열에서 첫번째로 큰 값은: " + Number.get(0));
-			System.out.print("배열에서 두번째로 큰 값은: 없음");	
+			System.out.print("배열에서 두번째로 큰 값은: 없음");
 		} else if(Number.size() > 1) {
 			while(NumberSize > 1) {
-				if(Number.get(I + T) >= Number.get(I + J)) {
-					I++;
-				} else {
+				if(Number.get(I) >= Number.get(J)) {
 					J++;
-					T++;
+				} else {
+					I = J;
+					if (Number.size() < Number.get(J) - 1) {
+						J++;
+					} else {
+						break;
+					}
 				}
-			NumberSize--;
+				NumberSize--;
 			}
-		System.out.print("배열에서 첫번째로 큰 값은: " + Number.get(I+T) + "(" + (I+T) + ")");
+		System.out.print("배열에서 첫번째로 큰 값은: " + Number.get(I) + "(" + (I) + ")");
 		}
 	}
 }

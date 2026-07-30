@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Day3 {
+public class Day3Factorial {
 
 	public static int ReturnBack(int i) {	
 
