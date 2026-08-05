@@ -5,9 +5,6 @@ public class Day1 {
 	public static void main(String[] args) {
 		Scanner Sc = new Scanner(System.in);
 		
-		int FirstMost = 0;
-		int SecondMost = 0;
-		
 		int I = 0;
 		int J = 1;
 		
@@ -44,7 +41,8 @@ public class Day1 {
 				}
 				NumberSize--;
 			}
-		System.out.print("배열에서 첫번째로 큰 값은: " + Number.get(I) + "(" + (I) + ")");
+		System.out.println("배열에서 첫번째로 큰 값은: " + Number.get(I) + "(" + (I) + ")");
+		System.out.println("
 		}
 	}
 }
